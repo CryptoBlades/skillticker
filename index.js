@@ -12,11 +12,11 @@ function getPrices() {
 			let upordown = "";
 			if (priceChange > 0){
 				upordown = "▲ increased "
-				symbol1 = "↗"
+				symbol1 = "⬈"
 			}
 			else{
 				upordown = "▼ decreased "
-				symbol1 = "↘"
+				symbol1 = "⬊"
 			}
 			client.user.setPresence({
 				game: {
@@ -26,8 +26,8 @@ function getPrices() {
 				}
 			})
 
-			client.guilds.find(guild => guild.id === process.env.SERVER_ID1).me.setNickname(`$${(symbol1+currentPrice*0.92).toLocaleString(undefined, {minimumFractionDigits:3}).replace(/,/g,",")}/SKILL`)
-			client.guilds.find(guild => guild.id === process.env.SERVER_ID2).me.setNickname(`$${(symbol1+currentPrice*0.92).toLocaleString(undefined, {minimumFractionDigits:3}).replace(/,/g,",")}/SKILL`)
+			client.guilds.find(guild => guild.id === process.env.SERVER_ID1).me.setNickname(symbol1+ ` $${(currentPrice*0.92).toLocaleString(undefined, {minimumFractionDigits:3}).replace(/,/g,",")}/SKILL`)
+			client.guilds.find(guild => guild.id === process.env.SERVER_ID2).me.setNickname(symbol1+` $${(currentPrice*0.92).toLocaleString(undefined, {minimumFractionDigits:3}).replace(/,/g,",")}/SKILL`)
 			console.log('Updated price to', currentPrice)
 		}
 		else
